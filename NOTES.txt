@@ -1,6 +1,1 @@
-Deux idées :
-
-(1) Créer une classe
-(2) Créer un package devant être appelé avec la classe beamer.
-
-Préférence pour l'idée (2).
+Début d'écriture d'un package .sty sur la base de documents .tex qui fonctionnent.
