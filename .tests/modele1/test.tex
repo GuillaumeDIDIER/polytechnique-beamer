@@ -50,8 +50,11 @@
 
 \AtBeginSection[]{
 	{
-		\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.2] at (current page.east) {\includegraphics[width=8cm,keepaspectratio]{./img/blazon}};}
+        \makeatletter
+		\setbeamertemplate{background canvas}{}%
+        %\setbeamertemplate{\tikz[remember picture,overlay]\node[opacity=0.2] at (current page.east) {\includegraphics[width=8cm,keepaspectratio]{./img/blazon}};}
 		\setbeamertemplate{footline}{}
+        \makeatother
 		\begin{frame}
 			\frametitle{Table of Contents}
 			\tableofcontents[currentsection]
