@@ -48,20 +48,36 @@
 }
 \makeatother
 
-\AtBeginSection[]{
-	{
-        \makeatletter
-		\setbeamertemplate{background canvas}{}%
-        %\setbeamertemplate{\tikz[remember picture,overlay]\node[opacity=0.2] at (current page.east) {\includegraphics[width=8cm,keepaspectratio]{./img/blazon}};}
-		\setbeamertemplate{footline}{}
-        \makeatother
-		\begin{frame}
-			\frametitle{Table of Contents}
-			\tableofcontents[currentsection]
-			\addtocounter{framenumber}{-1}
-		\end{frame}
-	}
+
+\let\oldsection=\section
+\renewcommand{\section}[1]{
+    {
+    \oldsection{#1}
+    \makeatletter
+    \setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.2] at (current page.east) {\includegraphics[width=8cm,keepaspectratio]{./img/blazon}};}
+    \makeatother
+    \setbeamertemplate{footline}{}
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+        \addtocounter{framenumber}{-1}
+    \end{frame}
+    }
 }
+% \AtBeginSection[]{
+% 	{
+%         \makeatletter
+% 		\setbeamertemplate{background canvas}{}%
+%         %\setbeamertemplate{\tikz[remember picture,overlay]\node[opacity=0.2] at (current page.east) {\includegraphics[width=8cm,keepaspectratio]{./img/blazon}};}
+% 		\setbeamertemplate{footline}{}
+%         \makeatother
+% 		\begin{frame}
+% 			\frametitle{Table of Contents}
+% 			\tableofcontents[currentsection]
+% 			\addtocounter{framenumber}{-1}
+% 		\end{frame}
+% 	}
+% }
 
 
 \begin{document}
