@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[french,noconfigs]{babel}
 \usepackage{tikz}
+\usepackage{ifthen}
 
 \definecolor{Blue}{RGB}{0,59,92}
 \definecolor{Grey}{RGB}{74,73,72}
@@ -31,6 +32,7 @@
 \institute{École polytechnique}
 \date\today
 
+\newboolean{tocframe}\setboolean{tocframe}{false}
 
 \makeatletter
 \setbeamertemplate{footline}
@@ -51,8 +53,9 @@
 \AtBeginSection[]{
 	{
         \makeatletter
-		\setbeamertemplate{background canvas}{}%
-        %\setbeamertemplate{\tikz[remember picture,overlay]\node[opacity=0.2] at (current page.east) {\includegraphics[width=8cm,keepaspectratio]{./img/blazon}};}
+        \setboolean{tocframe}{true}
+		%\setbeamertemplate{background canvas}{}%
+        %\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.2] at (current page.east) {\includegraphics[width=8cm,keepaspectratio]{./img/blazon}};}
 		\setbeamertemplate{footline}{}
         \makeatother
 		\begin{frame}
@@ -60,6 +63,7 @@
 			\tableofcontents[currentsection]
 			\addtocounter{framenumber}{-1}
 		\end{frame}
+        \setboolean{tocframe}{false}
 	}
 }
 
@@ -73,15 +77,20 @@
 }
 
 \begin{frame}
-Hello World !
+Hello World~:
 \end{frame}
 
-\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[shift={(-1cm,-1.25cm)},opacity=0.5] at (current page.north east) {\includegraphics[width=1.25cm,keepaspectratio]{./img/blazon}};}
+\setbeamertemplate{background canvas}{%
+\ifthenelse{\boolean{tocframe}}{%
+\tikz[remember picture,overlay]\node[opacity=0.2,left=-4pt] at (current page.east) {\includegraphics[height=0.9\paperheight,keepaspectratio]{./img/halfblazon}};%
+}{%
+\tikz[remember picture,overlay]\node[shift={(-1cm,-1.25cm)},opacity=0.5] at (current page.north east) {\includegraphics[width=1.25cm,keepaspectratio]{./img/blazon}};%
+}}
 
 \section{Introduction}
 
 \begin{frame}
-Hello World !
+Hello World~:
 \end{frame}
 
 \section{Background}

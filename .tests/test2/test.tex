@@ -1,0 +1,155 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[french,noconfigs]{babel}
+\usepackage{tikz}
+\usepackage{ifthen}
+
+\definecolor{Blue}{RGB}{0,59,92}
+\definecolor{Grey}{RGB}{74,73,72}
+\definecolor{Red}{RGB}{247,38,22}
+\definecolor{DarkRed}{RGB}{197,26,27}
+\definecolor{Yellow}{RGB}{223,176,0}
+\definecolor{White}{RGB}{255,255,255}
+
+\setbeamercolor{title}{fg=Blue}
+\setbeamercolor{frametitle}{fg=Blue}
+\setbeamercolor{structure}{fg=Blue}
+\setbeamercolor{itemize/enumerate body}{fg=Grey}
+\setbeamercolor{itemize/enumerate subbody}{fg=black}
+\setbeamercolor{itemize subitem}{fg=Grey}
+\setbeamercolor{normal text}{fg=DarkRed}
+\setbeamercolor{section in toc}{fg=Grey}
+\setbeamercolor{institute}{fg=Blue}
+\setbeamercolor{footlinecolor}{fg=White,bg=Blue}
+
+\setbeamertemplate{itemize items}[circle]
+
+\newboolean{tocframe}\setboolean{tocframe}{false}
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{footlinecolor}
+            \usebeamerfont{title in head/foot}\insertsection
+        \end{beamercolorbox}%
+
+        \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex]{footlinecolor}%
+            \usebeamerfont{title in head/foot}MON DIAPORAMA \hfill \insertframenumber \,\,\,\,%
+        \end{beamercolorbox}}%
+        \vskip0pt
+}
+\makeatother
+
+\AtBeginSection[]{
+    {
+        \setboolean{tocframe}{true}
+        \setbeamertemplate{navigation symbols}{}
+        \setbeamertemplate{footline}{}
+        \begin{frame}
+            \frametitle{Table of Contents}
+            \tableofcontents[currentsection]
+            \addtocounter{framenumber}{-1}
+        \end{frame}
+        \setboolean{tocframe}{false}
+    }
+}
+
+\begin{document}
+
+\setbeamertemplate{background canvas}{%
+\ifthenelse{\boolean{tocframe}}{%
+\tikz[remember picture,overlay]\node[opacity=0.2,left=-4pt] at (current page.east) {\includegraphics[height=0.9\paperheight,keepaspectratio]{./img/halfblazon}};%
+}{%
+\tikz[remember picture,overlay]\node[shift={(-1cm,-1.25cm)},opacity=0.5] at (current page.north east) {\includegraphics[width=1.25cm,keepaspectratio]{./img/blazon}};%
+}}
+
+{
+\setlength{\unitlength}{0.1\paperheight}
+\setbeamertemplate{background canvas}{%
+    \color{white}%
+    \begin{picture}(10,10)%fond
+        \includegraphics[height=\paperheight,keepaspectratio]{img/fond}%
+    \end{picture}%
+    \hspace*{-\paperheight}%
+    \begin{picture}(3,10)%date
+        \setlength{\unitlength}{1ex}%
+        \put(0.5,0.5){\footnotesize \today}%
+    \end{picture}%
+    \begin{picture}(3,10)%auteur
+        \setlength{\unitlength}{1ex}%
+        \put(0.5,0.5){\footnotesize Clément Durand}%
+    \end{picture}%
+}
+\begin{frame}[plain,c]
+    \color{white}
+    \begin{flushright}
+        \begin{picture}(9,6)
+            \put(0,2.95){%titre
+                \makebox(9,3.05)[br]{%
+                    $\text{%
+                        \bfseries\begin{minipage}{9\unitlength}%
+                            \Large\setlength{\baselineskip}{0.7\baselineskip}%
+                            \begin{flushright}%
+                                LE TITRE DE MON BEAU DIAPORAMA%
+                            \end{flushright}%
+                        \end{minipage}%
+                    }$%
+                }%
+            }
+            \put(0,0){%sous-titre
+                \makebox(9,2.75)[tr]{%
+                    $\text{%
+                        \begin{minipage}{9\unitlength}%
+                            \setlength{\baselineskip}{0.7\baselineskip}%
+                            \begin{flushright}%
+                                LE JOLI SOUS-TITRE DE MON MAGNIFIQUE DIAPORAMA%
+                            \end{flushright}%
+                        \end{minipage}%
+                    }$%
+                }%
+            }
+        \end{picture}
+    \end{flushright}
+\end{frame}
+}
+
+\section{Première section}
+\begin{frame}
+\frametitle{Première diapositive}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus, odio ut ultrices venenatis, mauris ex mollis magna, quis imperdiet felis arcu et tortor. \pause Etiam eget purus varius, aliquam metus vitae, pharetra urna. Vivamus quis nisi in sapien tempor dictum. Ut laoreet aliquet justo, nec posuere eros placerat at. Nunc vel mauris in libero semper feugiat vel quis lacus.
+
+\end{frame}
+
+\subsection{Première sous-section}
+\begin{frame}
+\frametitle{Seconde diapositive}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus, odio ut ultrices venenatis, mauris ex mollis magna, quis imperdiet felis arcu et tortor. Etiam eget purus varius, aliquam metus vitae, pharetra urna. Vivamus quis nisi in sapien tempor dictum. Ut laoreet aliquet justo, nec posuere eros placerat at. Nunc vel mauris in libero semper feugiat vel quis lacus.
+
+\end{frame}
+
+\subsection{Seconde sous-section}
+\begin{frame}
+\frametitle{Troisième diapositive}
+
+\begin{itemize}
+    \item<1-3> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    \item<2> Aliquam luctus, odio ut ultrices venenatis, mauris ex mollis magna, quis imperdiet felis arcu et tortor.
+    \item<1> Etiam eget purus varius, aliquam metus vitae, pharetra urna.
+    \item<3> Vivamus quis nisi in sapien tempor dictum.
+\end{itemize}
+\end{frame}
+
+\section{Seconde section}
+\begin{frame}
+\frametitle{Quatrième diapositive}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus, odio ut ultrices venenatis, mauris ex mollis magna, quis imperdiet felis arcu et tortor. Etiam eget purus varius, aliquam metus vitae, pharetra urna. Vivamus quis nisi in sapien tempor dictum. Ut laoreet aliquet justo, nec posuere eros placerat at. Nunc vel mauris in libero semper feugiat vel quis lacus.
+
+\end{frame}
+
+
+\end{document}

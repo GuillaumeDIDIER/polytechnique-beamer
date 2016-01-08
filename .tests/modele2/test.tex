@@ -37,34 +37,59 @@
 \date{}
 \begin{document}
 
-
-%\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{ecole.png}}
-\begin{frame}[plain]
-
-
-\begin{center}
-\textcolor{white}{\Large{Histoire des sciences contemporaines} \\ \bigskip \large{ Au delà de Galois et Poincaré :  \\
-créations individuelles et dynamiques collectives}}
-
-\bigskip
-
-
-\bigskip
-\textcolor{white}{\large {Frédéric Brechenmacher}} 
-
-\bigskip
-\textcolor{white}{\small{Laboratoire interdisciplinaire de l'X \\ \bigskip Département humanités et sciences sociales \\ École polytechnique}}
-
-\end{center}
-
+\setlength{\unitlength}{0.1\paperheight}
+\setbeamertemplate{background canvas}{%
+    \color{white}%
+    \begin{picture}(10,10)%fond
+        \includegraphics[height=\paperheight,keepaspectratio]{img/fond}%
+    \end{picture}%
+    \hspace*{-\paperheight}%
+    \begin{picture}(3,10)%date
+        \setlength{\unitlength}{1ex}%
+        \put(0.5,0.5){\footnotesize \today}%
+    \end{picture}%
+    \begin{picture}(3,10)%auteur
+        \setlength{\unitlength}{1ex}%
+        \put(0.5,0.5){\footnotesize Clément Durand}%
+    \end{picture}%
+}
+\begin{frame}[plain,c]
+    \color{white}
+    \begin{flushright}
+        \begin{picture}(9,6)
+            \put(0,2.95){%titre
+                \makebox(9,3.05)[br]{%
+                    $\text{%
+                        \bfseries\begin{minipage}{9\unitlength}%
+                            \Large\setlength{\baselineskip}{0.7\baselineskip}%
+                            \begin{flushright}%
+                                LE TITRE DE MON BEAU DIAPORAMA%
+                            \end{flushright}%
+                        \end{minipage}%
+                    }$%
+                }%
+            }
+            \put(0,0){%sous-titre
+                \makebox(9,2.75)[tr]{%
+                    $\text{%
+                        \begin{minipage}{9\unitlength}%
+                            \setlength{\baselineskip}{0.7\baselineskip}%
+                            \begin{flushright}%
+                                LE JOLI SOUS-TITRE DE MON MAGNIFIQUE DIAPORAMA%
+                            \end{flushright}%
+                        \end{minipage}%
+                    }$%
+                }%
+            }
+        \end{picture}
+    \end{flushright}
 \end{frame}
-
 \setbeamertemplate{background canvas}{}
 
 
-\section{Préambule : un dilemme}
+\section{Préambule~: un dilemme}
 \begin{frame}
-\frametitle{Préambule : un dilemme}
+\frametitle{Préambule~: un dilemme}
 
 \pause
 …
