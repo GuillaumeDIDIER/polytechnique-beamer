@@ -1,4 +1,5 @@
 ## Fichiers de tests
+.tests/*
 testing/*
 
 ## Core latex/pdflatex auxiliary files:
