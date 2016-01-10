@@ -1,0 +1,64 @@
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage{beamerthemeBerkeley}% theme
+
+\definecolor{bleu303}{RGB}{0,62,92}
+\colorlet{darkbleu303}{black!20!bleu303}
+\colorlet{lightbleu303}{white!20!bleu303}
+\definecolor{rouge485}{RGB}{213,43,30}
+\colorlet{darkrouge485}{black!20!rouge485}
+\colorlet{lightrouge485}{white!20!rouge485}
+
+\usecolortheme[named=bleu303]{structure}% propre au thème
+% \setbeamercolor{structure}{fg=Blue}
+% \setbeamercolor{frametitle}{fg=Blue}
+% \setbeamercolor{section in toc}{fg=Grey}
+% \setbeamercolor{institute}{fg=Blue}
+% \setbeamercolor{footlinecolor}{fg=White,bg=Blue}
+\setbeamertemplate{sidebar canvas left}[vertical shading][top=bleu303,middle=bleu303,bottom=bleu303]
+\setbeamercolor{subsection in sidebar}{bg=lightbleu303,fg=white}
+\setbeamercolor{section in sidebar}{bg=lightbleu303,fg=white}
+\colorlet{titlecolor}{white}
+\colorlet{fgnormal}{bleu303}
+\colorlet{bgnormal}{white}
+\colorlet{bglogo}{darkbleu303}
+\colorlet{bdyitemize}{black!80!white}
+\colorlet{sbdyitemize}{black}
+
+\setbeamercolor{title}{fg=titlecolor}% general
+\setbeamercolor{normal text}{fg=fgnormal,bg=bgnormal}
+\setbeamercolor{logo}{bg=bglogo}
+\setbeamercolor{itemize/enumerate body}{fg=bdyitemize}
+\setbeamercolor{itemize/enumerate subbody}{fg=sbdyitemize}
+\setbeamertemplate{itemize item}[circle]
+
+\newcommand\polytitresave{}
+\newcommand\polysoustitresave{}
+\newcommand\polyauteursave{}
+\newcommand\polydatesave{\today}
+\newcommand\polylogosave{\includegraphics[scale=0.35]{img/logovert}}
+\newcommand\polylogotitresave{}
+\newcommand\polylogopersosave{}
+
+\let\oldtitle=\title% supposé faire une copie de sauvegarde
+\renewcommand\title[2][{}]{
+    \renewcommand\polytitresave{#2}
+    \renewcommand\polysoustitresave{#1}
+}
+\let\oldauthor=\author
+\renewcommand\author[1]{
+    \renewcommand\polyauthorsave
+}
+\let\olddate=\date
+\renewcommand\date[1]{
+    \renewcommand\polydatesave{#1}
+}
+\let\oldlogo=\logo
+\renewcommand\logo[1]{
+    \renewcommand\polylogopersosave{
+        \includegraphics[width=2cm,height=1cm,keepaspectratio]{#1}% dimensions à changer
+    }
+}
+
+\oldlogo{\polylogosave{}}
