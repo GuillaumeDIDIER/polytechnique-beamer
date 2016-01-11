@@ -7,13 +7,10 @@
             \includegraphics[height=\paperheight,keepaspectratio]{img/fond_ecole}%
         \end{picture}%
         \hspace*{-\paperheight}%
-        \begin{picture}(5,10)%date
-            \put(0.5,0.5){\footnotesize \polydatesave}%
-        \end{picture}%
-        \begin{picture}(5,10)%auteur
-            \setlength{\unitlength}{1ex}%
-            \put(0.5,0.5){\footnotesize \polyauteursave}%
-        \end{picture}%
+        \begin{minipage}[b]{\paperwidth}
+        \footnotesize \hspace*{1mm}\raisebox{1mm}{\polyauteursave} \hspace*{\fill} \raisebox{1mm}{\polydatesave}\hspace*{1mm}
+        \end{minipage}
+        \hspace*{-\paperwidth}
         \tikz\node[remember picture, overlay, right] at (current page.west) {\includegraphics[height=0.33\paperheight]{img/whitelogo}};
     }
     \begin{frame}[plain,c]
