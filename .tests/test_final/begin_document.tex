@@ -7,15 +7,13 @@
             \includegraphics[height=\paperheight,keepaspectratio]{img/fond_ecole}%
         \end{picture}%
         \hspace*{-\paperheight}%
-        \begin{picture}(3,10)%date
-            \setlength{\unitlength}{1ex}%
+        \begin{picture}(5,10)%date
             \put(0.5,0.5){\footnotesize \polydatesave}%
         \end{picture}%
-        \begin{picture}(3,10)%auteur
+        \begin{picture}(5,10)%auteur
             \setlength{\unitlength}{1ex}%
             \put(0.5,0.5){\footnotesize \polyauteursave}%
-        \end{picture}
-        \hspace*{-0.6\paperheight}
+        \end{picture}%
         \tikz\node[remember picture, overlay, right] at (current page.west) {\includegraphics[height=0.33\paperheight]{img/whitelogo}};
     }
     \begin{frame}[plain,c]
