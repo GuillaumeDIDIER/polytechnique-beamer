@@ -5,12 +5,21 @@
 
 \usepackage[hideothersubsections]{beamerthemeBerkeley}% theme
 
+\usefonttheme{professionalfonts}
+\usefonttheme[stillsansseriflarge,stillsansserifsmall]{serif}
+
 \definecolor{bleu303}{RGB}{0,62,92}
 \colorlet{darkbleu303}{black!20!bleu303}
 \colorlet{lightbleu303}{white!20!bleu303}
+\colorlet{ultralightbleu303}{white!80!bleu303}
 \definecolor{rouge485}{RGB}{213,43,30}
 \colorlet{darkrouge485}{black!20!rouge485}
 \colorlet{lightrouge485}{white!20!rouge485}
+\colorlet{ultralightrouge485}{white!80!rouge485}
+\definecolor{vert575}{RGB}{107,126,81}
+\colorlet{darkvert575}{black!20!vert575}
+\colorlet{lightvert575}{white!20!vert575}
+\colorlet{ultralightvert575}{white!80!vert575}
 
 \usecolortheme[named=bleu303]{structure}% propre au thème
 % \setbeamercolor{structure}{fg=Blue}
@@ -18,6 +27,9 @@
 % \setbeamercolor{section in toc}{fg=Grey}
 % \setbeamercolor{institute}{fg=Blue}
 % \setbeamercolor{footlinecolor}{fg=White,bg=Blue}
+% \addtobeamertemplate{headline}{}{%
+%     \polylogopersosave{}%
+% }
 \setbeamertemplate{sidebar canvas left}[default]
 \addtobeamertemplate{sidebar left}{}{%
     \raisebox{1mm}{%
@@ -34,7 +46,8 @@
 \setbeamercolor{subsection in sidebar}{bg=lightbleu303,fg=white}
 \setbeamercolor{section in sidebar}{bg=lightbleu303,fg=white}
 \colorlet{titlecolor}{white}
-\colorlet{fgnormal}{bleu303}
+\colorlet{boxtitle}{white}
+\colorlet{fgnormal}{black}%{bleu303}
 \colorlet{bgnormal}{white}
 \colorlet{bglogo}{darkbleu303}
 \colorlet{bdyitemize}{black!80!white}
@@ -46,7 +59,17 @@
 \setbeamercolor{itemize/enumerate body}{fg=bdyitemize}
 \setbeamercolor{itemize/enumerate subbody}{fg=sbdyitemize}
 \setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{enumerate item}[square]
+\setbeamertemplate{enumerate subitem}[circle]
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{bg=bleu303,fg=boxtitle}
+\setbeamercolor{block body}{bg=ultralightbleu303,fg=black}
+\setbeamercolor{block title alerted}{bg=rouge485,fg=boxtitle}
+\setbeamercolor{block body alerted}{bg=ultralightrouge485,fg=black}
+\setbeamercolor{block title example}{bg=vert575,fg=boxtitle}
+\setbeamercolor{block body example}{bg=ultralightvert575,fg=black}
 
 \newcommand\polytitresave{}
 \newcommand\polysoustitresave{}
@@ -66,7 +89,7 @@
 \let\oldauthor=\author
 \renewcommand\author[1]{
     \renewcommand\polyauteursave{#1}
-    \oldauthor{#1}
+    \oldauthor{\rmfamily\bfseries #1}
 }
 \let\olddate=\date
 \renewcommand\date[1]{
@@ -75,8 +98,22 @@
 \let\oldlogo=\logo
 \renewcommand\logo[1]{
     \renewcommand\polylogopersosave{
-        \includegraphics[width=2cm,height=1cm,keepaspectratio]{#1}% dimensions à changer
+        \includegraphics[width=14mm,height=14mm,keepaspectratio]{#1}% dimensions à changer
     }
 }
 
-\oldlogo{\polylogosave{}}
+%\oldlogo{\polylogosave{}}
+\oldlogo{%
+    \hspace*{\paperwidth}%
+    \hspace*{-16mm}%
+    \makebox[\paperwidth]{%
+        \makebox[16mm]{%
+        \polylogosave{}%
+        }%
+        \hfill%
+        \makebox[32mm][r]{%
+        \polylogopersosave{}%
+        }%
+        \hspace*{1mm}%
+    }%
+}
