@@ -18,7 +18,17 @@
 % \setbeamercolor{section in toc}{fg=Grey}
 % \setbeamercolor{institute}{fg=Blue}
 % \setbeamercolor{footlinecolor}{fg=White,bg=Blue}
-\setbeamertemplate{sidebar canvas left}[vertical shading][top=bleu303,middle=bleu303,bottom=bleu303]
+\setbeamertemplate{sidebar canvas left}[default]
+\addtobeamertemplate{sidebar left}{}{%
+    \raisebox{1mm}{%
+        \makebox[16mm]{%
+            \color{white}%
+            \usebeamerfont{page number in head/foot}%
+            \insertframenumber/\inserttotalframenumber%
+        }%
+    }%
+}
+\setbeamercolor{sidebar left}{bg=bleu303}
 \setbeamercolor{title in sidebar}{fg=white}
 \setbeamercolor{author in sidebar}{fg=white}
 \setbeamercolor{subsection in sidebar}{bg=lightbleu303,fg=white}
