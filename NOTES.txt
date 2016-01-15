@@ -1,2 +1,3 @@
 Début d'écriture d'un package .sty sur la base de documents .tex qui fonctionnent.
 
+
